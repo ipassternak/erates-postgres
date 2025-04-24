@@ -1,0 +1,29 @@
+# Virtual environment
+venv/
+.env/
+
+# Byte-compiled / Cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+
+# Logs
+*.log
+
+# Dependency Lock Files
+pip-log.txt
+pip-wheel-metadata/
+
+# OS-Specific Files
+.DS_Store
+Thumbs.db
+
+# Editor & IDE Files
+.vscode/
+.idea/
+*.swp
+
+# Db
+app/db/*.db

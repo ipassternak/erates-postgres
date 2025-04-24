@@ -1,0 +1,35 @@
+name: erates
+
+services:
+
+  app:
+    volumes:
+      - ./app/db:/srv/erates/app/db
+    container_name: erates_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=postgresql://erates:erates@postgres:5432/erates
+      - SECRET_KEY=your_secret_key
+      - TOKEN_EXPIRE_MINUTES=60
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: erates_postgres
+    environment:
+      POSTGRES_USER: erates
+      POSTGRES_PASSWORD: erates
+      POSTGRES_DB: erates
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-data:
